@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "(lldb) 调试 opt + pass",
+        "type": "lldb",
+        "request": "launch",
+        "program": "${workspaceFolder}/build/bin/opt",
+        "args": [
+          "--xVMP",
+          "${workspaceFolder}/my_test/hello_old.ll",
+          "-o",
+          "${workspaceFolder}/my_test/hello.bc"
+        ],
+        "cwd": "${workspaceFolder}",
+      }
+    ]
+}
+  
