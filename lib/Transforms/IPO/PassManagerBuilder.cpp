@@ -52,6 +52,7 @@
 #include "llvm/Transforms/Obfuscation/Substitution.h"
 #include "llvm/Transforms/Obfuscation/StringObfuscation.h"
 #include "llvm/Transforms/Obfuscation/CryptoUtils.h"
+#include "llvm/Transforms/Obfuscation/xVMP.h"
 
 using namespace llvm;
 
@@ -482,6 +483,9 @@ void PassManagerBuilder::populateModulePassManager(
 
   // Allow forcing function attributes as a debugging and tuning aid.
   MPM.add(createForceFunctionAttrsLegacyPass());
+  
+  MPM.add(createDemoteRegisterToMemoryPass());
+  MPM.add(createVMProtect(false));
 
   MPM.add(createSplitBasicBlock(Split));
   MPM.add(createBogus(BogusControlFlow));
